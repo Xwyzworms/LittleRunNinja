@@ -12,7 +12,8 @@ public class Trap_Fire : Trap
     private void Start()
     {
         anim = GetComponent<Animator>();
-        //InvokeRepeating("FireSwitch",0, repeatRate);
+        if(transform.parent == null) 
+            InvokeRepeating("FireSwitch",0, repeatRate);
     }
 
     private void Update() 
@@ -27,6 +28,8 @@ public class Trap_Fire : Trap
         isWorking = !isWorking;
     }
 
+
+    
     protected override void OnTriggerEnter2D(Collider2D collision) 
     {
         if(isWorking) 
